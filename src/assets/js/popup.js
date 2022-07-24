@@ -44,6 +44,11 @@
       imageBq.innerHTML = `<p>${i18n('internalError')}</p>`;
     }
   });
+  document.getElementById('url_input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      urlRun.click();
+    }
+  });
   const clipboard = new ClipboardJS('.copy_btn');
   clipboard.on('success', _e => {
     resCopy.style.color = '#feb22b';
