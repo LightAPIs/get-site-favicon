@@ -1,5 +1,6 @@
 const path = require('path');
 const fse = require('fs-extra');
+const archiver = require('archiver');
 const packageInfo = require('./package.json');
 const { exit } = require('process');
 const args = require('minimist')(process.argv.slice(2));
@@ -40,13 +41,8 @@ if (!fse.existsSync(outputPath)) {
 }
 
 const copyHandler = function (source, dest) {
-  fse.copy(source, dest, err => {
-    if (err) {
-      console.error(err);
-      exit(1);
-    }
-    console.log(`INFO::Copy "${source}" to "${dest}".`);
-  });
+  fse.copySync(source, dest);
+  console.log(`INFO::Copy "${source}" to "${dest}"`);
 };
 
 //* Copy manifest.json
@@ -57,3 +53,39 @@ copyHandler(sourceManifest, destManifest);
 //* Copy manifest.json
 const assets = path.resolve(__dirname, './src/assets');
 copyHandler(assets, outputPath);
+
+if (args['pack']) {
+  const infoName = packageInfo.name;
+  const infoVersion = packageInfo.version;
+  switch (args['pack']) {
+    case 'c2':
+      packName = `${infoName}-manifest-v2_v${infoVersion}.zip`;
+      break;
+    case 'c3':
+      packName = `${infoName}-manifest-v3_v${infoVersion}.zip`;
+      break;
+    case 'ff':
+      packName = `${infoName}-firefox_v${infoVersion}.zip`;
+      break;
+    default:
+      packName = `${infoName}_v${infoVersion}.zip`;
+      break;
+  }
+  const packFile = fse.createWriteStream(__dirname + '/archive/' + packName);
+  const archive = archiver('zip');
+
+  packFile.on('close', () => {
+    console.log(`INFO::Archive ${outputPath} to ${packName} | ${archive.pointer()} total bytes.`);
+  });
+  packFile.on('end', () => {
+    console.log('INFO::Data has been drained.');
+  });
+
+  archive.on('error', err => {
+    throw err;
+  });
+
+  archive.pipe(packFile);
+  archive.directory(outputPath, false);
+  archive.finalize();
+}

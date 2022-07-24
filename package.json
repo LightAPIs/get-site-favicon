@@ -8,10 +8,23 @@
   "scripts": {
     "build:c2": "node ./build.js --name=c2",
     "build:c3": "node ./build.js --name=c3",
-    "build:ff": "node ./build.js --name=ff"
+    "build:ff": "node ./build.js --name=ff",
+    "build": "npm run build:c2 && npm run build:c3 && npm run build:ff",
+    "pack:c2": "node ./build.js --name=c2 --pack=c2",
+    "pack:c3": "node ./build.js --name=c3 --pack=c3",
+    "pack:ff": "node ./build.js --name=ff --pack=ff",
+    "pack": "npm run pack:c2 && npm run pack:c3 && npm run pack:ff",
+    "release": "standard-version"
   },
   "devDependencies": {
+    "archiver": "^5.3.1",
     "fs-extra": "^10.1.0",
-    "minimist": "^1.2.6"
+    "minimist": "^1.2.6",
+    "standard-version": "^9.5.0"
+  },
+  "standard-version": {
+    "scripts": {
+      "posttag": "npm run pack"
+    }
   }
 }
