@@ -1,0 +1,17 @@
+{
+  "name": "get-site-favicon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "extension project",
+  "author": "Light",
+  "license": "GPL-3.0",
+  "scripts": {
+    "build:c2": "node ./build.js --name=c2",
+    "build:c3": "node ./build.js --name=c3",
+    "build:ff": "node ./build.js --name=ff"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.1.0",
+    "minimist": "^1.2.6"
+  }
+}

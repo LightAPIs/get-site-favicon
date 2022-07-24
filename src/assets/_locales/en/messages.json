@@ -1,0 +1,35 @@
+{
+  "extName": {
+    "message": "Get Site Favicon"
+  },
+  "extDes": {
+    "message": "You can get the favicon for the site by entering a URL."
+  },
+  "urlInputLabel": {
+    "message": "URL: "
+  },
+  "urlRunValue": {
+    "message": "Find"
+  },
+  "resInputLabel": {
+    "message": "Res: "
+  },
+  "resCopyValue": {
+    "message": "Copy"
+  },
+  "imageEm": {
+    "message": "Preview: "
+  },
+  "internalError": {
+    "message": "Internal error!"
+  },
+  "loading": {
+    "message": "Loading..."
+  },
+  "loadError": {
+    "message": "No icon found!"
+  },
+  "donwloadBtn": {
+    "message": "Get"
+  }
+}

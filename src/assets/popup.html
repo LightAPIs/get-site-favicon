@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="copyright" content="Light" />
+    <link href="/css/popup.css" rel="preload" as="style" />
+    <link href="/js/popup.js" rel="preload" as="script" />
+    <link href="/css/popup.css" rel="stylesheet" />
+    <title>Popup</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">
+        <label id="url_input_label" for="url_input"></label>
+        <input id="url_input" type="text" name="url_input" value="" />
+        <button id="url_run"></button>
+      </div>
+      <div class="item">
+        <label id="res_input_label" for="res_input"></label>
+        <input id="res_input" type="text" name="res_input" value="" />
+        <button id="res_copy" class="copy_btn" data-clipboard-target="#res_input"></button>
+      </div>
+      <div class="item">
+        <b id="image_label"></b>
+        <button id="download_btn" class="download_btn hide_button"></button>
+        <blockquote id="image_blockquote"></blockquote>
+      </div>
+    </div>
+    <script src="/js/clipboard.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/popup.js"></script>
+  </body>
+</html>

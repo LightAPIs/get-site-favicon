@@ -1,0 +1,35 @@
+{
+  "extName": {
+    "message": "获取网站图标"
+  },
+  "extDes": {
+    "message": "您可以通过输入一个 URL 来获得站点的图标。"
+  },
+  "urlInputLabel": {
+    "message": "网址: "
+  },
+  "urlRunValue": {
+    "message": "查询"
+  },
+  "resInputLabel": {
+    "message": "结果: "
+  },
+  "resCopyValue": {
+    "message": "复制"
+  },
+  "imageEm": {
+    "message": "图标预览: "
+  },
+  "internalError": {
+    "message": "内部错误！"
+  },
+  "loading": {
+    "message": "拼命获取中..."
+  },
+  "loadError": {
+    "message": "没有查询到图标！"
+  },
+  "donwloadBtn": {
+    "message": "下载"
+  }
+}

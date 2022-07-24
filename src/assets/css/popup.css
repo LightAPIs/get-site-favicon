@@ -1,0 +1,39 @@
+body {background: #467b96; color: #dae5ea; font-size: 16px; text-align: center; overflow: hidden;}
+.container {
+  width: 300px;
+  min-height: 100px;
+}
+.item {
+  margin-bottom: 5px;
+}
+.item label {
+  width: 40px;
+  display: inline-block;
+}
+.item input {
+  border: 1px solid #2196f3;
+  border-radius: 3px;
+}
+.item button {
+  margin-left: 5px;
+  background: #608ea5;
+  border: 1px solid #608ea5;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  width: 50px;
+}
+#image_label {
+  float: left;
+}
+.res_image {
+  max-width: 128px;
+  max-height: 128px;
+}
+.download_btn {
+  float: right;
+  margin-right: 15px;
+}
+.hide_button {
+  display: none;
+}
