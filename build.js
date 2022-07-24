@@ -27,7 +27,7 @@ switch (args['name']) {
 
 const outputPath = path.resolve(__dirname, './build/', dir);
 fse.removeSync(outputPath);
-console.log(`INFO::Clear dir: ${outputPath}`);
+console.log(`INFO::Clear "${outputPath}"`);
 
 if (!fse.existsSync(outputPath)) {
   try {
@@ -71,11 +71,24 @@ if (args['pack']) {
       packName = `${infoName}_v${infoVersion}.zip`;
       break;
   }
-  const packFile = fse.createWriteStream(__dirname + '/archive/' + packName);
+  const archivePath = path.resolve(__dirname, './archive');
+  if (!fse.existsSync(archivePath)) {
+    try {
+      fse.mkdirSync(archivePath, {
+        recursive: true,
+      });
+    } catch (err) {
+      console.error(err);
+      exit(1);
+    }
+  }
+
+  const pachPath = path.resolve(archivePath, packName);
+  const packFile = fse.createWriteStream(pachPath);
   const archive = archiver('zip');
 
   packFile.on('close', () => {
-    console.log(`INFO::Archive ${outputPath} to ${packName} | ${archive.pointer()} total bytes.`);
+    console.log(`INFO::Archive "${outputPath}" to "${pachPath}" | ${archive.pointer()} total bytes.`);
   });
   packFile.on('end', () => {
     console.log('INFO::Data has been drained.');
