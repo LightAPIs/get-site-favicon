@@ -26,11 +26,11 @@
         window.getFavicon
           .detectIcon(urlValue)
           .then(res => {
-            if (res) {
-              document.getElementById('res_input').value = res;
-              imageBq.innerHTML = `<img src="${res}" class="res_image" />`;
+            if (res && res.url) {
+              document.getElementById('res_input').value = res.url;
+              imageBq.innerHTML = `<img src="${res.url}" class="res_image" /><p class="image_size">( ${res.width} x ${res.height} )</p>`;
               donwloadBtn.style.display = 'block';
-              imageUrl = res;
+              imageUrl = res.url;
             } else {
               imageBq.innerHTML = `<p>${i18n('loadError')}</p>`;
             }

@@ -37,3 +37,6 @@ body {background: #467b96; color: #dae5ea; font-size: 16px; text-align: center; 
 .hide_button {
   display: none;
 }
+#image_blockquote .image_size {
+  margin: 5px 0 0 0;
+}
