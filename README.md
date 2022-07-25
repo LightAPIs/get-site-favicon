@@ -10,7 +10,7 @@ You can get the favicon for the site by entering a URL.
 
 - ![default](img/default.jpg)
 
-- ![test](img/test.jpg)
+- ![test](img/github.jpg)
 
 ## Installation
 
