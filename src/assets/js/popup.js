@@ -14,6 +14,13 @@
   resCopy.textContent = i18n('resCopyValue');
   donwloadBtn.textContent = i18n('donwloadBtn');
   let imageUrl = '';
+  const imageSizeHandler = function (imgDom, data, pDom) {
+    if (imgDom.naturalWidth && imgDom.naturalHeight) {
+      if (imgDom.naturalWidth > data.width || imgDom.naturalHeight > data.height) {
+        pDom.textContent = `( ${imgDom.naturalWidth} x ${imgDom.naturalHeight} )`;
+      }
+    }
+  };
   urlRun.addEventListener('click', e => {
     e.stopPropagation();
     document.getElementById('res_input').value = '';
@@ -35,6 +42,13 @@
               donwloadBtn.style.display = 'block';
               resP.textContent = `( ${res.width} x ${res.height} )`;
               imageUrl = res.url;
+              if (resImage.complete) {
+                imageSizeHandler(resImage, res, resP);
+              } else {
+                resImage.onload = () => {
+                  imageSizeHandler(resImage, res, resP);
+                };
+              }
             } else {
               resP.textContent = i18n('loadError');
             }
