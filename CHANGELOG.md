@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/LightAPIs/get-site-favicon/compare/v1.1.1...v1.1.2) (2022-07-26)
+
+
+### Bug Fixes
+
+* Fix the incorrect size display of some icons ([683a565](https://github.com/LightAPIs/get-site-favicon/commit/683a565adbaa9fbb5b45359b82acbe567508ff81))
+
 ### [1.1.1](https://github.com/LightAPIs/get-site-favicon/compare/v1.1.0...v1.1.1) (2022-07-26)
 
 
