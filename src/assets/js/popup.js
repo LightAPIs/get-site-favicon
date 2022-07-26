@@ -6,9 +6,10 @@
   document.getElementById('res_input_label').textContent = i18n('resInputLabel');
   document.getElementById('image_label').textContent = i18n('imageEm');
   const urlRun = document.getElementById('url_run');
-  const imageBq = document.getElementById('image_blockquote');
   const resCopy = document.getElementById('res_copy');
   const donwloadBtn = document.getElementById('download_btn');
+  const resP = document.getElementById('res_p');
+  const resImage = document.getElementById('res_image');
   urlRun.textContent = i18n('urlRunValue');
   resCopy.textContent = i18n('resCopyValue');
   donwloadBtn.textContent = i18n('donwloadBtn');
@@ -16,32 +17,35 @@
   urlRun.addEventListener('click', e => {
     e.stopPropagation();
     document.getElementById('res_input').value = '';
-    imageBq.innerHTML = `<p></p>`;
+    resImage.style.display = 'none';
     donwloadBtn.style.display = 'none';
+    resP.textContent = '';
     imageUrl = '';
     if (window.getFavicon) {
       const urlValue = document.getElementById('url_input').value;
       if (urlValue) {
-        imageBq.innerHTML = `<p>${i18n('loading')}</p>`;
+        resP.textContent = i18n('loading');
         window.getFavicon
           .detectIcon(urlValue)
           .then(res => {
             if (res && res.url) {
               document.getElementById('res_input').value = res.url;
-              imageBq.innerHTML = `<img src="${res.url}" class="res_image" /><p class="image_size">( ${res.width} x ${res.height} )</p>`;
+              resImage.src = res.url;
+              resImage.style.display = 'inline';
               donwloadBtn.style.display = 'block';
+              resP.textContent = `( ${res.width} x ${res.height} )`;
               imageUrl = res.url;
             } else {
-              imageBq.innerHTML = `<p>${i18n('loadError')}</p>`;
+              resP.textContent = i18n('loadError');
             }
           })
           .catch(e => {
             console.error(e);
-            imageBq.innerHTML = `<p>${i18n('loadError')}</p>`;
+            resP.textContent = i18n('loadError');
           });
       }
     } else {
-      imageBq.innerHTML = `<p>${i18n('internalError')}</p>`;
+      resP.textContent = i18n('internalError');
     }
   });
   document.getElementById('url_input').addEventListener('keydown', e => {
